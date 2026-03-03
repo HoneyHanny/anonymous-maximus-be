@@ -10,7 +10,12 @@ const app = express()
 
 // Security Middlewares
 app.use(helmet())
-app.use(cors())
+const origins = (process.env.FRONTEND_URL || 'http://localhost:3000').split(',')
+app.use(
+  cors({
+    origin: origins,
+  })
+)
 app.use(express.json({ limit: '10kb' })) // Limit body size
 app.use(logMiddleware)
 
