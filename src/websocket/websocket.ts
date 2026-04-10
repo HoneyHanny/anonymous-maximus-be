@@ -4,8 +4,10 @@ import { addMessage } from '../db/messageDb'
 import type { Guid } from '../helpers/helper'
 import { randomUUID } from 'crypto'
 
+import { FRONTEND_URL } from '../config'
+
 export function setupWebSocket(server: any) {
-  const origins = (process.env.FRONTEND_URL || 'http://localhost:3000').split(',')
+  const origins = (FRONTEND_URL as string).split(',')
 
   const io = new Server(server, {
     cors: {

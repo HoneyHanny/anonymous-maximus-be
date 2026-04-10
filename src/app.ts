@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
+import { FRONTEND_URL } from './config'
 import roomRoutes from './routes/roomRoutes'
 import messageRoutes from './routes/messageRoutes'
 import { logMiddleware } from './middlewares/log'
@@ -10,7 +11,7 @@ const app = express()
 
 // Security Middlewares
 app.use(helmet())
-const origins = (process.env.FRONTEND_URL || 'http://localhost:3000').split(',')
+const origins = (FRONTEND_URL as string).split(',')
 app.use(
   cors({
     origin: origins,

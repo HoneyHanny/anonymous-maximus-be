@@ -1,12 +1,12 @@
 import { createClient } from 'redis'
-import { REDIS_HOST, REDIS_PASS, REDIS_PORT, REDIS_USERNAME } from '..'
+import { REDIS_HOST, REDIS_PASS, REDIS_PORT, REDIS_USERNAME } from '../config'
 
 const client = createClient({
-  username: 'default',
-  password: 'IORPwStAqEPLZG8KWCSmYOrlyM1iUK8M',
+  username: REDIS_USERNAME,
+  password: REDIS_PASS,
   socket: {
-    host: 'redis-15491.c323.us-east-1-2.ec2.cloud.redislabs.com',
-    port: 15491,
+    host: REDIS_HOST,
+    port: REDIS_PORT,
   },
 })
 
